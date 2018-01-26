@@ -14,15 +14,15 @@
 
 <section class="panel panel-default">
     <header class="header bg-white b-b b-light">
-        <p><a href="">内容管理</a>&nbsp;&nbsp;<i class="fa fa-angle-double-right">&nbsp;&nbsp;<a href="">企业历程</a></i></p>
+        <p><a href="">内容管理</a>&nbsp;&nbsp;<i class="fa fa-angle-double-right">&nbsp;&nbsp;<a href="">{$title}</a></i></p>
     </header>
     <header class="panel-heading font-bold" style="height:55px">
-        <form method="get" action="{:U('Content/courseList')}">
+        <form method="get" action="{:U($full_url)}">
             <span class="col-sm-4" style="font-size:25px;"></span>
             <span class="col-sm-8" style="text-align: right;">
-                <a href="{:U('Content/addContent',array('type'=>1))}" class="btn btn-facebook">添加公告</a>
+                <a href="{:U('Content/addContent',array('type'=>$type))}" class="btn btn-facebook">添加</a>
                 <button type="submit" class="btn btn-default">搜索</button>
-                <input type="text" name="search" value="{$search}" placeholder="请搜索公告名"
+                <input type="text" name="search" value="{$Think.get.search}" placeholder="请输入查找内容"
                        class="form-control" style="display:inline-block; width: 250px">
             </span>
         </form>
@@ -31,9 +31,10 @@
         <table class="table table-striped b-t b-light text-sm">
             <thead>
             <tr>
-                <th>历程标题</th>
+                <th>标题</th>
                 <th>发布时间</th>
                 <th>作者</th>
+                <th>排序</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -49,9 +50,13 @@
                     <td style="vertical-align: middle">
                         {$item.nickname}
                     </td>
+                    <td style="vertical-align: middle;color:black;font-size: 16px">
+                        <input type="hidden" name="id" value="{$item.id}">
+                        <input type="text" class="form-control sort" style="width:50px;display: inline" value="{$item.sort}">
+                    </td>
                     <td style="vertical-align: middle;width:300px">
                         <a href="{:U('Content/modContent',array('content_id'=>$item['id']))}"   class="btn btn-primary">编辑</a>
-                        <a href="{:U('Content/delContent',array('content_id'=>$item['id']))}"  class="btn btn-danger" onclick="return confirm('确定删除此公告吗?')">删除</a>
+                        <a href="{:U('Content/delContent',array('content_id'=>$item['id']))}"  class="btn btn-danger" onclick="return confirm('确定删除此历程吗?')">删除</a>
                     </td>
                 </tr>
             </foreach>
@@ -67,5 +72,26 @@
 </div>
 <script src="__PUBLIC__/js/jquery.js"></script>
 <script>
+
+    $(".sort").bind('input propertychange', function() {
+        var id = $(this).prev().val();
+        var sort = $(this).val();
+        var rule = /^[0-9]{0,10}$/;
+        if(!rule.test(sort)) {
+            alert('排序必须为数字,且不超过10位');
+            return;
+        }
+        $.ajax({
+            url:"{:U('Content/sort')}",
+            type:"post",
+            data:{id:id,sort:sort},
+            success:function(data) {
+                console.log(data)
+            },
+            error: function(data) {
+                console.log('system error')
+            }
+        })
+    });
 
 </script>

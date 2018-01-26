@@ -11,4 +11,6 @@ return array(
     'DB_PORT' => 3306, // 端口
     'DB_PREFIX' => 'ims_acti2_', // 数据库表前缀
     'DB_CHARSET' => 'utf8mb4', // 字符集
+
+    'URL_MODEL' => '2', //URL模式
 );
