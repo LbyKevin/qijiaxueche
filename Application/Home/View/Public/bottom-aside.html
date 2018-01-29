@@ -1,0 +1,83 @@
+<footer>
+    <div>
+        <h2>在线预约</h2>
+        <h3>请留下您的联系方式，我们将在12小时内联系您</h3>
+        <input type="text" id="name" name="name" value="" placeholder="请输入您的姓名">
+        <input type="text" id="tel" name="tel" value="" placeholder="请输入您的电话号码">
+        <button id="apply">提交</button>
+    </div>
+    <div class="clearfix">
+        <div class="col-lg-10">
+            <div class="col-lg-4">
+                <h4>联系我们</h4>
+                <ul>
+                    <li>联系人：{$contact_info['linkman']}</li>
+                    <li>联系电话：{$contact_info['tel']}</li>
+                    <li>公司地址：{$contact_info['address']}</li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h4>网站导航</h4>
+                <ul>
+                    <li><a href="{:U('Index/curriculum_erweima')}">驾校课程</a></li>
+                    <li><a href="{:U('Index/enterprise_experience')}">企业历程</a></li>
+                    <li><a href="{:U('Index/Industry_dynamics')}">行业动态</a></li>
+                    <li><a href="{:U('Index/traffic_regulations')}">交通法规</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h4>启驾学车</h4>
+                <ul>
+                    <li>{$contact_info['city']}</li>
+                    <li>{$contact_info['email']}</li>
+                    <li>{$contact_info['registration']}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-2" style=" text-align: center;">
+            <img src="__PUBLIC__/img/1517211187.png" alt="">
+            <span>扫码关注我们</span>
+        </div>
+    </div>
+</footer>
+<script>
+    var clickstatus = true;
+    $("#apply").click(function() {
+        var name = $("#name").val()
+        var tel = $("#tel").val()
+        var rule = /^0?(13|14|15|17|18)[0-9]{9}$/;
+        if(name == '' || tel == '') {
+            alert('联系信息不能为空')
+            return
+        }
+        if(!rule.test(tel)) {
+            alert('手机号格式不符')
+            return
+        }
+        if(clickstatus) {
+            clickstatus = false
+            $.ajax({
+                url:"{:U('Index/apply')}",
+                dataType:"json",
+                type:"post",
+                data:{name:name,tel:tel},
+                success:function(data) {
+                    console.log(data)
+                    if(data == 1) {
+                        alert('提交成功')
+                    }else {
+                        alert(data)
+                    }
+                    clickstatus = true
+                },
+                error:function (data) {
+                    clickstatus = true
+                    alert('请求失败')
+                }
+            })
+        }
+
+    })
+
+</script>

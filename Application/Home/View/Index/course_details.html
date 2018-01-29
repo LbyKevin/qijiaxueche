@@ -1,0 +1,59 @@
+ <style>
+        .bigpic{
+            width: 100%;
+            min-width: 1200px;
+            height: auto;
+        }
+        .details{
+            margin-top: 85px;
+        }
+        .details h2{
+            font-size: 2.8vw;
+            color: #222222;
+            margin-bottom: 48px;
+
+        }
+        .details h3{
+            font-size: 2.1vw;
+            color: #666;
+            margin-bottom: 48px;
+        }
+        .details div{
+            font-size: 2.1vw;
+            color: #666;
+            margin-bottom: 48px;
+        }
+        .details div ul{
+            display: inline-grid;
+        }
+        footer>div:first-child{
+            border-bottom: 1px solid #DABC88;
+            padding-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="col-lg-3" style="margin-top: 10px">
+        <img src=".__PUBLIC__/src/image/LOGO.png" alt="" >
+    </div>
+    <include file="Public/aside"/>
+</header>
+<img src=".__PUBLIC__/src/image/bannner.jpg" alt="" class="bigpic">
+<div class="col-lg-offset-3 details">
+    <h2>{$info['title']}</h2>
+    <h3>驾照名称：{$info['cat_name']}</h3>
+    <h3>报名时间：{$info['date']|date="Y-m-d",###} 到 {$info['date']|date="Y-m-d",###}</h3>
+    <h3>驾校地点：{$info['place']}</h3>
+    <h3>课程收费：￥{$info['fee']}元</h3>
+    <div>
+        <span>课程收费:&nbsp;&nbsp;</span>
+        <ul>
+            <li>{$info['acti_desc']|htmlspecialchars_decode}</li>
+        </ul>
+    </div>
+</div>
+<include file="Public:bottom-aside"/>
+<script>
+  $('header ul').moveline({color:'#DABC88',position:'inner',height: 4});
+</script>

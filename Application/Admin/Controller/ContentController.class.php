@@ -141,14 +141,93 @@ class ContentController extends CommonController
     }
 
     public function slideList() {
-
+        $this->list = M('QijiaSlideshow')->order(array('ctime'=>'ASC'))->select();
+        $this->display();
     }
 
     public function addSlide() {
-
+        if(IS_AJAX) {
+            if($_FILES['file']['name'] != '') {
+                $info = $this->OneUpload('file');
+                $_POST['pic'] = $info['savepath'].$info['savename'];
+            }
+            $Slide = D('QijiaSlideshow');
+            if($Slide->create()) {
+                if($Slide->add()) {
+                    json(1);
+                }else {
+                    json('添加失败');
+                }
+            }else {
+                json($Slide->getError());
+            }
+        }
+        $this->display();
     }
 
     public function modSlide() {
-
+        if(IS_AJAX) {
+            if($_FILES['file']['name'] != '') {
+                $info = $this->OneUpload('file');
+                $_POST['pic'] = $info['savepath'].$info['savename'];
+            }
+            $Slide = D('QijiaSlideshow');
+            if($Slide->create()) {
+                if($Slide->save() !== false) {
+                    json(1);
+                }else {
+                    json('保存失败');
+                }
+            }else {
+                json($Slide->getError());
+            }
+        }
+        $this->info = M('QijiaSlideshow')->where(array('id'=>I('get.id')))->find();
+        $this->display();
     }
+
+    public function newSort() {
+        $wraper = M('QijiaSlideshow');
+        $order = $wraper->order(array('ctime' => 'ASC'))->getField('ctime', true);
+
+        $newArr = explode(',', $_POST['newid']);
+        foreach ($newArr as $key => $v) {
+            $data = array(
+                'ctime' => $order[$key]
+            );
+            $wraper->where(array('id' => $v))->save($data);
+        }
+
+        $this->ajaxReturn(1);
+    }
+
+    public function contactInfo() {
+        $this->info = M('QijiaContact')->where(array('id'=>1))->find();
+        $this->display();
+    }
+
+    public function saveContactInfo() {
+        $Contact = D('QijiaContact');
+        $_POST['id'] = 1;
+        if($_FILES['file']['name'] != '') {
+            $info = $this->OneUpload('file');
+            $_POST['qrcode'] = $info['savepath'].$info['savename'];
+        }
+        if(IS_AJAX) {
+            if($Contact->create()) {
+                $res = $Contact->save();
+                if($res !== false) {
+                    $this->ajaxReturn(1);
+                }else {
+                    $this->ajaxReturn('保存失败');
+                }
+            }else {
+                $this->ajaxReturn($Contact->getError());
+            }
+        }
+    }
+
+
+
+
 }

@@ -1,0 +1,62 @@
+ <style>
+        .head-pic{
+            background-image: url("__PUBLIC__/src/image/bannner.jpg");
+            background-position: bottom center;
+            width:100%;
+            height:332px;
+            position: relative;
+        }
+        .head-pic div{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            background-color: rgba(0,0,0,0.6);
+
+        }
+        .head-pic span{
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            display: inline-block;
+            margin: 0 auto;
+            line-height: 332px;
+            font-size: 2.1vw;
+            color: #DABC88;
+            position: relative;
+            z-index: 1;
+        }
+        #ewm{
+            height:auto;
+            width: 28%;
+            margin: 0 auto;
+            display: block;
+            margin-top: 155px;
+        }
+        p{
+            width: 100%;
+            text-align: center;
+            font-size: 2.5vw;
+            color: #DABC88;
+            margin-top: 65px;
+            margin-bottom: 200px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="col-lg-3" style="margin-top: 10px">
+        <img src="__PUBLIC__/src/image/LOGO.png" alt="" >
+    </div>
+    <include file="Public/aside"/>
+</header>
+<div class="head-pic">
+    <span>为了让您更加详细，全面的了解我们的课程，请用微信扫描下方二维码详细了解</span>
+    <div></div>
+</div>
+<img src="__ROOT__/{$contact_info['qrcode']}" alt="" id="ewm">
+<p>启驾学车</p>
+<include file="Public:bottom-aside"/>
+<script>
+  $('header ul').moveline({color:'#DABC88',position:'inner',height: 4});
+</script>

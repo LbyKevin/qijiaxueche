@@ -1,0 +1,107 @@
+<script src="__PUBLIC__/src/js/jquery.sortable.js" cache="false"></script>
+<section class="panel panel-default">
+    <header class="header bg-white b-b b-light">
+        <p><a href="{:U('Content/slideList')}">内容管理</a>&nbsp;&nbsp;<i class="fa fa-angle-double-right">&nbsp;&nbsp;<a href="">轮播图</a></i></p>
+    </header>
+    <header class="panel-heading font-bold clearfix">
+        <span class="col-sm-10" style="font-size:25px">轮播图设置 <span style="font-size: 16px; font-weight: normal; margin-left: 10px;">（建议尺寸：1920 * 500）</span></span>
+        <span class="col-sm-2" style="text-align: right;">
+            <a href="{:U('Content/addSlide')}" class="btn btn-dark">添加轮播图</a>
+        </span>
+    </header>
+</section>
+<div class="row">
+    <ul style="list-style: none;padding-right:30px;" id="module_list">
+        <div id='loader' style="position:fixed;width:100%;height:100%;display: none;"></div>
+        <foreach name="list" item="for">
+            <div class="modules" title="{$for.id}">
+                <li class="m_title" style="background: #eee;border-bottom: 1px solid #ccc">
+                    <div style="display: inline-block;width:200px;height: 120px">
+                        <img class="imgg" src="__ROOT__/{$for.pic}" style="width:100%;height: 100%;">
+                    </div>
+                    <div style="display: inline-block;width:45%;text-indent: 20px">
+                        <p style="font-size: 20px;">
+                            {$for.title}</p>
+                    </div>
+                    <div style="display: inline-block;width:35%; text-align: right;">
+                        <a href="{:U('Content/modSlide',array('id'=>$for['id']))}" class="btn btn-info">编辑</a>
+                        <a href="{:U('Content/delSlide',array('id'=>$for['id']))}" class="btn btn-danger">删除</a>
+                    </div>
+                </li>
+            </div>
+        </foreach>
+    </ul>
+</div>
+
+<div class="row">
+    <if condition="empty($list)">
+        <div class="col-sm-12 text-center" >
+            <a href="{:U('Content/addSlide')}"><h1>还没有轮播图,添加几张吧</h1></a>
+        </div>
+    </if>
+</div>
+<script src="__PUBLIC__/src/js/jquery.form.js"></script>
+<script type="text/javascript" src="__PUBLIC__/src/js/jquery-ui.min.js"></script>
+<script type="text/javascript">
+
+    $(".m_title").bind('mouseover',
+        function() {
+            $(this).css("cursor", "move")
+        });
+
+    var $show = $("#loader");
+    var $list = $("#module_list");
+
+    $list.sortable({
+        opacity: 1,
+        revert: true,
+        cursor: 'move',
+        handle: '.m_title',
+        update: function() {
+            var new_order = [];
+            $list.children(".modules").each(function() {
+                new_order.push(this.title);
+            });
+            var newid = new_order.join(',');
+
+            $.ajax({
+                type: "post",
+                url: "{:U('Content/newSort')}",
+                data: {
+                    newid: newid,
+                },
+
+                beforeSend: function() {
+                    $show.css('display','block');
+
+                },
+                success: function(msg) {
+                    $show.css('display','none');
+                },
+                error: function(msg) {
+                    alert('出错');
+                }
+            });
+        }
+    });
+
+    function delImg(id) {
+        if(confirm('确定删除此轮播图吗?')) {
+            $.post("{:U('Operation/delWraper')}",{id:id},function(data){
+                if(data == 1) {
+                    $("div[title='"+id+"']").remove();
+                }else {
+                    alert(data);
+                }
+            })
+        }
+    }
+
+    function wToggle(id) {
+        $.post("{:U('Operation/toggleWraper')}",{id:id},function(data){
+            if (data == 1) {
+                location.reload();
+            }
+        })
+    }
+</script>

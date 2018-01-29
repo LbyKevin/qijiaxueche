@@ -1,0 +1,95 @@
+ <style>
+        .content{
+            width: 100%;
+            padding-bottom: 105px;
+        }
+        .content li{
+            padding: 0 7.5%;
+            margin-top: 90px;
+            padding-bottom: 90px;
+            border-bottom: 2px solid #DABC88;
+        }
+        @media (min-width: 1200px){
+            .content>li>img{
+                float: left;
+                width: 38%;
+            }
+            .content>li div{
+                float: right;
+                width: 52%;
+            }
+        }
+
+        .content li div h2{
+            font-size: 2.1vw;
+            color: #222;
+            line-height: 2;
+        }
+        .content li div p{
+            font-size: 1.75vw;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 9.5%;
+        }
+        .content li div button{
+            background-color:#0C275B ;
+            width:41%;
+            height:72px;
+            border-radius: 5px;
+            color: #DABC88;
+            font-size: 2.1vw;
+
+        }
+        .content li div button img{
+            vertical-align: initial;
+            width: 6%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="col-lg-3" style="margin-top: 10px">
+        <img src="__PUBLIC__/src/image/LOGO.png" alt="" >
+    </div>
+    <include file="Public/aside"/>
+</header>
+<ul class="content">
+   <li class="clearfix">
+       <img src="__PUBLIC__/src/image/jiaotongfafui.jpg" alt="" class="">
+       <div class="">
+           <h2>新手必看：最常见的交通法规</h2>
+           <p>新手开车上路后， 熟悉遵守交通法规成为必修课，下面呢小编就用图示来详细解释最常用的几项交通法规，让新手安全上路，自如变道，尽早成为老手。</p>
+           <a href="{:U('Index/details_of_traffic_regulations')}"><button>了解更多 <img src="__PUBLIC__/src/image/arr.png" alt=""></button></a>
+       </div>
+   </li>
+    <li class="clearfix">
+        <img src="__PUBLIC__/src/image/jiaotongfafui.jpg" alt="" class="">
+        <div class="">
+            <h2>新手必看：最常见的交通法规</h2>
+            <p>新手开车上路后， 熟悉遵守交通法规成为必修课，下面呢小编就用图示来详细解释最常用的几项交通法规，让新手安全上路，自如变道，尽早成为老手。</p>
+            <a href="{:U('Index/details_of_traffic_regulations')}"><button>了解更多 <img src="__PUBLIC__/src/image/arr.png" alt=""></button></a>
+        </div>
+    </li>
+    <li class="clearfix">
+        <img src="__PUBLIC__/src/image/jiaotongfafui.jpg" alt="" class="">
+        <div class="">
+            <h2>新手必看：最常见的交通法规</h2>
+            <p>新手开车上路后， 熟悉遵守交通法规成为必修课，下面呢小编就用图示来详细解释最常用的几项交通法规，让新手安全上路，自如变道，尽早成为老手。</p>
+            <a href="{:U('Index/details_of_traffic_regulations')}"><button>了解更多 <img src="__PUBLIC__/src/image/arr.png" alt=""></button></a>
+        </div>
+    </li>
+    <li class="clearfix">
+        <img src="__PUBLIC__/src/image/jiaotongfafui.jpg" alt="" class="">
+        <div class="">
+            <h2>新手必看：最常见的交通法规</h2>
+            <p>新手开车上路后， 熟悉遵守交通法规成为必修课，下面呢小编就用图示来详细解释最常用的几项交通法规，让新手安全上路，自如变道，尽早成为老手。</p>
+            <a href="{:U('Index/details_of_traffic_regulations')}"><button>了解更多 <img src="__PUBLIC__/src/image/arr.png" alt=""></button></a>
+        </div>
+    </li>
+</ul>
+
+<include file="Public:bottom-aside"/>
+
+<script>
+  $('header ul').moveline({color:'#DABC88',position:'inner',height: 4});
+</script>
