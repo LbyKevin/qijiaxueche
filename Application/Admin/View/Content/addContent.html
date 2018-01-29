@@ -1,0 +1,44 @@
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+<section id="content">
+    <form class="form-horizontal ajaxForm" action="{:U('Content/addContentPost')}" method="post" enctype="multipart/form-data">
+        <div class="form-group" style="padding-top: 20px;padding-left: 15px">
+            <label class="col-sm-2 control-label">{$typename}标题:</label>
+            <div class="col-sm-5">
+                <input class="form-control rounded" type="text" name="title" value="" placeholder="输入标题" required>
+            </div>
+            <div class="col-sm-5"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" style="color:#fff">
+                <label for="file" class="btn btn-primary"><span>上传图片</span></label>
+            </label>
+            <div class="col-sm-5">
+                <input id="file" type="file" name="file" class="upload" style="display:none">
+                <img class="image" style="width:100%;" src="">
+            </div>
+            <div class="col-sm-5"></div>
+        </div>
+        <div class="form-group" style="padding:20px 15px">
+            <label class="col-sm-2 control-label">{$typename}内容:</label>
+            <div class="col-sm-8">
+                <textarea id="editor" name="content" type="text/plain" style="width:100%;height:500px;"></textarea>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <div class="form-group" style="text-align: center">
+            <input type="hidden" name="type" value="{$type}">
+            <button type="submit" class="btn btn-primary save">添加</button>
+        </div>
+    </form>
+</section>
+
+<script>
+    var ue = UE.getEditor('editor');
+    $('.upload').change(function(e){
+        var img = e.target.files[0];
+        var src = window.URL.createObjectURL(img);
+        $('.image').attr('src',src);
+    })
+</script>
