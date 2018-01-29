@@ -16,14 +16,15 @@
         <foreach name="list" item="for">
             <div class="modules" title="{$for.id}">
                 <li class="m_title" style="background: #eee;border-bottom: 1px solid #ccc">
-                    <div style="display: inline-block;width:200px;height: 120px">
-                        <img class="imgg" src="__ROOT__/{$for.pic}" style="width:100%;height: 100%;">
+                    <div style="display: inline-block;width:30%">
+                        <img class="imgg" src="__ROOT__/{$for.pic}" style="width:100%">
                     </div>
-                    <div style="display: inline-block;width:45%;text-indent: 20px">
+                    <div style="display: inline-block;width:30%;text-indent: 20px">
                         <p style="font-size: 20px;">
-                            {$for.title}</p>
+                            {$for.title}
+                        </p>
                     </div>
-                    <div style="display: inline-block;width:35%; text-align: right;">
+                    <div style="display: inline-block;text-align: right;">
                         <a href="{:U('Content/modSlide',array('id'=>$for['id']))}" class="btn btn-info">编辑</a>
                         <a href="{:U('Content/delSlide',array('id'=>$for['id']))}" class="btn btn-danger">删除</a>
                     </div>

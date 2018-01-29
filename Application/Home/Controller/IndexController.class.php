@@ -11,6 +11,7 @@ class IndexController extends CommonController {
             ->join("LEFT JOIN ims_acti2_cat c ON j.pid=c.id")
             ->field('j.*,c.cat_name')
             ->select();
+        $this->slide = M('QijiaSlideshow')->where(array('is_recommend'=>1))->order(array('ctime'=>'ASC'))->select();
         $this->display();
     }
 //了解更多

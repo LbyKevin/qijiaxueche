@@ -115,9 +115,9 @@
 </header>
 <div class="swiper-container">
     <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="__PUBLIC__/src/image/bannner.jpg" alt=""></div>
-        <div class="swiper-slide"><img src="__PUBLIC__/src/image/bannner.jpg" alt=""></div>
-        <div class="swiper-slide"><img src="__PUBLIC__/src/image/bannner.jpg" alt=""></div>
+        <foreach name="slide" item="for">
+            <div class="swiper-slide"><img src="__ROOT__/{$for.pic}" alt=""></div>
+        </foreach>
     </div>
     <div class="swiper-pagination"></div>
 </div>
@@ -175,8 +175,9 @@
   $('header ul').moveline({color:'#DABC88',position:'inner',height: 4});
 
   var mySwiper = new Swiper('.swiper-container', {
-    autoplay: 5000,//可选选项，自动滑动
-    pagination : '.swiper-pagination',
-    paginationClickable :true,
+        autoplay: 5000,//可选选项，自动滑动
+        pagination : '.swiper-pagination',
+        paginationClickable :true,
+        loop:true
   })
 </script>
