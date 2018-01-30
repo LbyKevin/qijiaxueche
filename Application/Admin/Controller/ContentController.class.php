@@ -52,13 +52,25 @@ class ContentController extends CommonController
         $this->display('courseList');
     }
 
+    public function environment() {
+        $this->list = M('QijiaNews')->alias('n')
+            ->join("LEFT JOIN ims_acti2_qijia_admin a ON n.admin_id=a.id")
+            ->field('n.*,a.nickname')
+            ->order(array('n.sort'=>'ASC'))
+            ->where(array('type'=>4))->select();
+        $this->type = 4;
+        $this->title = '驾校环境';
+        $this->display('courseList');
+    }
+
     public function addContent() {
         $type = I('get.type');
-        in_array($type,array(1,2,3)) || $this->error('非法参数');
+        in_array($type,array(1,2,3,4)) || $this->error('非法参数');
         switch($type) {
             case 1:$typename = '企业历程';break;
             case 2:$typename = '行业动态';break;
             case 3:$typename = '交通法规';break;
+            case 4:$typename = '驾校环境';break;
         }
         $this->type = $type;
         $this->typename = $typename;
@@ -67,6 +79,7 @@ class ContentController extends CommonController
 
     public function addContentPost() {
         $data['title'] = I('post.title');
+        $data['desc'] = I('post.desc');
         $data['content'] = I('post.content');
         $data['type'] = I('post.type');
         $data['admin_id'] = session('admin_id');
@@ -79,6 +92,7 @@ class ContentController extends CommonController
             case 1:$url = 'Content/courseList';break;
             case 2:$url = 'Content/newsList';break;
             case 3:$url = 'Content/lawsList';break;
+            case 4:$url = 'Content/environment';break;
         }
         $result = $News->add($data);
         if($result !== false) {
@@ -95,6 +109,7 @@ class ContentController extends CommonController
             case 1:$typename = '企业历程';break;
             case 2:$typename = '行业动态';break;
             case 3:$typename = '交通法规';break;
+            case 4:$typename = '驾校环境';break;
         }
         $this->typename = $typename;
         $this->content_id = $id;
@@ -103,17 +118,25 @@ class ContentController extends CommonController
 
     public function modContentPost() {
         $data['title'] = I('post.title');
+        $data['desc'] = I('post.desc');
         $data['content'] = I('post.content');
         $data['admin_id'] = session('admin_id');
+        $data['type'] = I('post.type');
         $id = I('post.content_id');
         $News = D('QijiaNews');
         if($_FILES['file']['name'] != '') {
             $info = $this->OneUpload('file');
             $data['img'] = $info['savepath'].$info['savename'];
         }
+        switch($data['type']) {
+            case 1:$url = 'Content/courseList';break;
+            case 2:$url = 'Content/newsList';break;
+            case 3:$url = 'Content/lawsList';break;
+            case 4:$url = 'Content/environment';break;
+        }
         $result = $News->where(array('id'=>$id))->save($data);
         if($result !== false) {
-            $this->success('修改成功',U('Content/courseList'));
+            $this->success('修改成功',U($url));
         }else {
             $this->error('修改失败');
         }

@@ -10,6 +10,13 @@
             </div>
             <div class="col-sm-5"></div>
         </div>
+        <div class="form-group" style="padding-top: 20px;padding-left: 15px">
+            <label class="col-sm-2 control-label">{$typename}简介:</label>
+            <div class="col-sm-5">
+                <input class="form-control rounded" type="text" name="desc" value="{$info['desc']}" placeholder="简单描述" maxlength="60" required>
+            </div>
+            <div class="col-sm-5"></div>
+        </div>
         <div class="form-group">
             <label class="col-sm-2 control-label" style="color:#fff">
                 <label for="file" class="btn btn-primary"><span>上传图片</span></label>
@@ -20,16 +27,19 @@
             </div>
             <div class="col-sm-5"></div>
         </div>
-        <div class="form-group" style="padding:20px 15px">
-            <label class="col-sm-2 control-label">{$typename}内容:</label>
-            <div class="col-sm-8">
-                <textarea id="editor" name="content" type="text/plain" style="width:100%;height:500px;">
-                    <?php echo htmlspecialchars_decode($info['content']);?>
-                </textarea>
+        <if condition="$info['type'] NEQ 4">
+            <div class="form-group" style="padding:20px 15px">
+                <label class="col-sm-2 control-label">{$typename}内容:</label>
+                <div class="col-sm-8">
+                    <textarea id="editor" name="content" type="text/plain" style="width:100%;height:500px;">
+                        <?php echo htmlspecialchars_decode($info['content']);?>
+                    </textarea>
+                </div>
+                <div class="col-sm-2"></div>
             </div>
-            <div class="col-sm-2"></div>
-        </div>
+        </if>
         <div class="form-group" style="text-align: center">
+            <input type="hidden" name="type" value="{$info.type}">
             <input type="hidden" name="content_id" value="{$content_id}">
             <button type="submit" class="btn btn-primary save">保存</button>
         </div>

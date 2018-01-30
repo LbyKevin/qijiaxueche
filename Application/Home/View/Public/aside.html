@@ -1,8 +1,11 @@
+<div class="col-lg-3" style="margin-top: 10px">
+    <img src=".__PUBLIC__/src/image/LOGO.png" alt="" >
+</div>
 <ul class="col-lg-9  visible-lg">
     <li <if condition="ACTION_NAME EQ 'index'">class="active"</if>><a href="{:U('Index/index')}">首页</a></li>
     <li <if condition="ACTION_NAME EQ 'curriculum_erweima'">class="active"</if>><a href="{:U('Index/curriculum_erweima')}">驾校课程</a></li>
     <li <if condition="ACTION_NAME EQ 'enterprise_experience'">class="active"</if>><a href="{:U('Index/enterprise_experience')}">企业历程</a></li>
     <li <if condition="ACTION_NAME EQ 'Industry_dynamics'">class="active"</if>><a href="{:U('Index/Industry_dynamics')}"> 行业动态</a></li>
-    <li <if condition="ACTION_NAME EQ 'traffic_regulations'">class="active"</if>><a href="{:U('Index/traffic_regulations')}">交通法规</a></li>
+    <li <if condition="ACTION_NAME EQ 'traffic_regulations' OR ACTION_NAME EQ 'details_of_traffic_regulations'">class="active"</if>><a href="{:U('Index/traffic_regulations')}">交通法规</a></li>
     <li <if condition="ACTION_NAME EQ 'contact_us'">class="active"</if>><a href="{:U('Index/contact_us')}">联系我们</a></li>
 </ul>

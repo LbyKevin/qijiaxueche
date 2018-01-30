@@ -3,7 +3,7 @@
             padding-top: 80px;
             width: 85%;
             margin: 0 auto;
-            padding-bottom: 150px;
+            padding-bottom: 30px;
         }
         .content h1{
             color: #222;
@@ -32,21 +32,15 @@
 </head>
 <body>
 <header>
-    <div class="col-lg-3" style="margin-top: 10px">
-        <img src=".__PUBLIC__/src/image/LOGO.png" alt="" >
-    </div>
     <include file="Public/aside"/>
 </header>
-<div class="content">
-    <h1>新手必看：最常见的交通法规</h1>
-    <h5>作者：<span>admin</span>时间：<span><i>2018-01-15</i> <i>19:28</i></span></h5>
-    <img src=".__PUBLIC__/src/image/jiaotongfagui-xiangqing.jpg" alt="">
-    <ul>
-        <li>1、科目二考试分为五项：倒车入库、坡道定点停车与起步、直角转弯、侧方位停车、曲线行驶。</li>
-        <li>1、科目二考试分为五项：倒车入库、坡道定点停车与起步、直角转弯、侧方位停车、曲线行驶。</li>
-        <li>1、科目二考试分为五项：倒车入库、坡道定点停车与起步、直角转弯、侧方位停车、曲线行驶。科目二考试分为五项：倒车入库、坡道定点停车与起步、直角转弯、侧方位停车、曲线行驶。科目二考试分为五项：倒车入库、坡道定点停车与起步、直角转弯、侧方位停车、曲线行驶。</li>
-        <li>1、科目二考试分为五项：倒车入库、坡道定点停车与起步、直角转弯、侧方位停车、曲线行驶。</li>
-    </ul>
+<div class="content" style="text-align: center">
+    <h1>{$info.title}</h1>
+    <h5>作者：<span>{$info.nickname}</span> &nbsp;&nbsp;&nbsp;&nbsp;时间：<span><i>{$info.ctime}</i></span></h5>
+    <img src="__ROOT__/{$info.img}" alt="" style="width: 50%;">
+</div>
+<div style="width:50%;margin-left:25%;font-size: 1.4vw">
+    {$info.content|htmlspecialchars_decode}
 </div>
 <include file="Public:bottom-aside"/>
 <script>

@@ -5,8 +5,8 @@
         }
         .content li{
             padding: 0 7.5%;
-            margin-top: 90px;
-            padding-bottom: 90px;
+            margin-top: 6VH;
+            padding-bottom: 6VH;
             border-bottom: 2px solid #DABC88;
         }
         @media (min-width: 1200px){
@@ -21,23 +21,27 @@
         }
 
         .content li div h2{
-            font-size: 2.1vw;
-            color: #222;
+            font-size: 1.4vw;
+            color: #DABC88;
             line-height: 2;
         }
         .content li div p{
-            font-size: 1.75vw;
+            font-size: 1.25vw;
             color: #666;
             line-height: 1.5;
-            margin-bottom: 9.5%;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+            overflow: hidden;
         }
         .content li div button{
             background-color:#0C275B ;
             width:41%;
-            height:72px;
+            height:50px;
             border-radius: 5px;
             color: #DABC88;
-            font-size: 2.1vw;
+            font-size: 1.4vw;
 
         }
         .content li div button img{
@@ -48,44 +52,20 @@
 </head>
 <body>
 <header>
-    <div class="col-lg-3" style="margin-top: 10px">
-        <img src="__PUBLIC__/src/image/LOGO.png" alt="" >
-    </div>
     <include file="Public/aside"/>
 </header>
 <ul class="content">
-   <li class="clearfix">
-       <img src="__PUBLIC__/src/image/jiaotongfafui.jpg" alt="" class="">
-       <div class="">
-           <h2>新手必看：最常见的交通法规</h2>
-           <p>新手开车上路后， 熟悉遵守交通法规成为必修课，下面呢小编就用图示来详细解释最常用的几项交通法规，让新手安全上路，自如变道，尽早成为老手。</p>
-           <a href="{:U('Index/details_of_traffic_regulations')}"><button>了解更多 <img src="__PUBLIC__/src/image/arr.png" alt=""></button></a>
-       </div>
-   </li>
-    <li class="clearfix">
-        <img src="__PUBLIC__/src/image/jiaotongfafui.jpg" alt="" class="">
-        <div class="">
-            <h2>新手必看：最常见的交通法规</h2>
-            <p>新手开车上路后， 熟悉遵守交通法规成为必修课，下面呢小编就用图示来详细解释最常用的几项交通法规，让新手安全上路，自如变道，尽早成为老手。</p>
-            <a href="{:U('Index/details_of_traffic_regulations')}"><button>了解更多 <img src="__PUBLIC__/src/image/arr.png" alt=""></button></a>
-        </div>
-    </li>
-    <li class="clearfix">
-        <img src="__PUBLIC__/src/image/jiaotongfafui.jpg" alt="" class="">
-        <div class="">
-            <h2>新手必看：最常见的交通法规</h2>
-            <p>新手开车上路后， 熟悉遵守交通法规成为必修课，下面呢小编就用图示来详细解释最常用的几项交通法规，让新手安全上路，自如变道，尽早成为老手。</p>
-            <a href="{:U('Index/details_of_traffic_regulations')}"><button>了解更多 <img src="__PUBLIC__/src/image/arr.png" alt=""></button></a>
-        </div>
-    </li>
-    <li class="clearfix">
-        <img src="__PUBLIC__/src/image/jiaotongfafui.jpg" alt="" class="">
-        <div class="">
-            <h2>新手必看：最常见的交通法规</h2>
-            <p>新手开车上路后， 熟悉遵守交通法规成为必修课，下面呢小编就用图示来详细解释最常用的几项交通法规，让新手安全上路，自如变道，尽早成为老手。</p>
-            <a href="{:U('Index/details_of_traffic_regulations')}"><button>了解更多 <img src="__PUBLIC__/src/image/arr.png" alt=""></button></a>
-        </div>
-    </li>
+    <foreach name="list" item="for">
+        <li class="clearfix" style="width:70%;margin-left: 15%">
+            <img src="__ROOT__/{$for.img}" alt="" class="">
+            <div class="">
+                <h2>{$for.title}</h2>
+                <p>{$for.desc}</p>
+                <a href="{:U('Index/details_of_traffic_regulations',array('id'=>$for['id']))}"><button>了解更多 <img src="__PUBLIC__/src/image/arr.png" alt=""></button></a>
+            </div>
+        </li>+
+    </foreach>
+
 </ul>
 
 <include file="Public:bottom-aside"/>

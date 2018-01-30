@@ -1,18 +1,28 @@
 <?php
 namespace Home\Controller;
 
-use Think\Model;
-
 class IndexController extends CommonController {
 //首页
     public function index(){
         $this->pvuvStatistics();
+        $limit = '0,2';
+        if(I('get.act') == 'more') {
+            $limit = '0,100';
+        }
         $this->courseList = M('Join')->alias('j')
             ->join("LEFT JOIN ims_acti2_cat c ON j.pid=c.id")
             ->field('j.*,c.cat_name')
+            ->limit($limit)
             ->select();
-        $this->slide = M('QijiaSlideshow')->where(array('is_recommend'=>1))->order(array('ctime'=>'ASC'))->select();
-        $this->display();
+        $this->slide = M('QijiaSlideshow')
+            ->where(array('is_recommend'=>1))
+            ->order(array('ctime'=>'ASC'))->select();
+        $this->env = M('QijiaNews')->where(array('type'=>4))->select();
+        if($this->isMobile()) {
+            $this->display('Index/Mobile/index');
+        }else {
+            $this->display();
+        }
     }
 //了解更多
     public function course_details() {
@@ -21,27 +31,85 @@ class IndexController extends CommonController {
             ->where(array('j.id'=>I('get.id')))
             ->field('j.*,c.cat_name')
             ->find();
-        $this->display();
+        if($this->isMobile()) {
+            $this->display('Index/Mobile/course_details');
+        }else {
+            $this->display();
+        }
     }
 //驾校课程
     public function curriculum_erweima() {
-        $this->display();
+        $this->courseList = M('Join')->alias('j')
+            ->join("LEFT JOIN ims_acti2_cat c ON j.pid=c.id")
+            ->field('j.*,c.cat_name')
+            ->select();
+        if($this->isMobile()) {
+            $this->display('Index/Mobile/curriculum_erweima');
+        }else {
+            $this->display();
+        }
     }
 //企业历程
     public function enterprise_experience() {
-        $this->display();
+        $this->list = M('QijiaNews')
+            ->where(array('type'=>1,'is_recommend'=>1))
+            ->order(array('sort'=>'ASC'))
+            ->select();
+        if($this->isMobile()) {
+            $this->display('Index/Mobile/enterprise_experience');
+        }else {
+            $this->display();
+        }
     }
 //行业动态
     public function Industry_dynamics() {
-        $this->display();
+        $this->list = M('QijiaNews')->where(array('type'=>2,'is_recommend'=>1))->select();
+        if($this->isMobile()) {
+            $this->display('Index/Mobile/Industry_dynamics');
+        }else {
+            $this->display();
+        }
+    }
+
+    public function dynamic_details() {
+        $this->info = M('QijiaNews')->alias('n')
+            ->join("LEFT JOIN ims_acti2_qijia_admin a ON n.admin_id=a.id")
+            ->field('n.*,a.nickname')
+            ->where(array('n.id'=>I('get.id')))->find();
+        if($this->isMobile()) {
+            $this->display('Index/Mobile/dynamic_details');
+        }else {
+            $this->display();
+        }
     }
 //交通法规
     public function traffic_regulations() {
-        $this->display();
+        $this->list = M('QijiaNews')->where(array('type'=>3,'is_recommend'=>1))->select();
+        if($this->isMobile()) {
+            $this->display('Index/Mobile/traffic_regulations');
+        }else {
+            $this->display();
+        }
+    }
+
+    public function details_of_traffic_regulations() {
+        $this->info = M('QijiaNews')->alias('n')
+            ->join("LEFT JOIN ims_acti2_qijia_admin a ON n.admin_id=a.id")
+            ->field('n.*,a.nickname')
+            ->where(array('n.id'=>I('get.id')))->find();
+        if($this->isMobile()) {
+            $this->display('Index/Mobile/details_of_the_laws');
+        }else {
+            $this->display();
+        }
     }
 //联系我们
     public function contact_us() {
-        $this->display();
+        if($this->isMobile()) {
+            $this->display('Index/Mobile/index');
+        }else {
+            $this->display();
+        }
     }
 
     public function apply() {

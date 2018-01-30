@@ -38,37 +38,21 @@
 </head>
 <body>
 <header>
-    <div class="col-lg-3" style="margin-top: 10px">
-        <img src="__PUBLIC__/src/image/LOGO.png" alt="" >
-    </div>
     <include file="Public/aside"/>
 </header>
 <div class="content">
     <ul>
-        <li>
-            <h2>初始阶段</h2>
-            <div class="clearfix">
-                <img src="__PUBLIC__/src/image/qiyejinglitu.jpg" alt="" class="col-lg-4">
-                <p class="col-lg-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget..</p>
-            </div>
-        </li>
-        <li>
-            <h2>初始阶段</h2>
-            <div class="clearfix">
-                <img src="__PUBLIC__/src/image/qiyejinglitu.jpg" alt="" class="col-lg-4">
-                <p class="col-lg-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget..</p>
-            </div>
-        </li>
-        <li>
-            <h2>初始阶段</h2>
-            <div class="clearfix">
-                <img src="__PUBLIC__/src/image/qiyejinglitu.jpg" alt="" class="col-lg-4">
-                <p class="col-lg-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget..</p>
-            </div>
-        </li>
+        <foreach name="list" item="for">
+            <li>
+                <h2>{$for.title}</h2>
+                <div class="clearfix">
+                    <img src="__ROOT__/{$for.img}" alt="" class="col-lg-4" style="margin-right: 5%">
+                    <p class="col-lg-8">
+                        {$for.content|htmlspecialchars_decode}
+                    </p>
+                </div>
+            </li>
+        </foreach>
     </ul>
 </div>
 <include file="Public:bottom-aside"/>

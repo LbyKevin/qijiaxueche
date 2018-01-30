@@ -1,6 +1,6 @@
 <style>
     #main{
-        width: 90%;
+        width: 60%;
         min-width: 1200px;
         margin: 0 auto;
         text-align: center;
@@ -34,27 +34,27 @@
         }
     }
     #main .contain div h3{
-        font-size:2.1vw;
+        font-size:1.4vw;
         color:rgba(34,34,34,1);
         margin-bottom: 27px;
         margin-top: 23px;
     }
     #main .contain div h4{
-        font-size:1.65vw;
+        font-size:1.15vw;
         color:rgba(102,102,102,1);
         margin-bottom: 27px;
     }
     #main .contain div button{
         width:50%;
-        height:72px;
+        height:50px;
         background-color: white;
         border-radius: 5px;
         border: 2px solid #DABC88;
-        font-size:40px;
+        font-size:30px;
         color:#DABC88 ;
     }
     #main .contain div button img{
-        vertical-align: initial;
+        vertical-align: text-bottom;
     }
     #main .huanjing{
         width: 100%;
@@ -83,14 +83,14 @@
 
     }
     #main .huanjing li div h3{
-        font-size:2.1vw;
+        font-size:1.4vw;
         color: #DABC88;
         text-align: left;
         margin-left: 3.2%;
         line-height: 2.3;
     }
     #main .huanjing li div span{
-        font-size:1.4vw;
+        font-size:1.15vw;
         color: #DABC88;
         text-align: left;
         display: block;
@@ -101,16 +101,10 @@
         border-bottom: 1px solid #DABC88;
         padding-bottom: 40px;
     }
-    .jiaxiao-img {
-        width:50%;height:450px;
-    }
 </style>
 </head>
 <body>
 <header>
-    <div class="col-lg-3 col-xs-5" style="">
-        <img src="__PUBLIC__/src/image/LOGO.png" alt=""  style="margin-top: 10px;height: 100%">
-    </div>
     <include file="Public/aside"/>
 </header>
 <div class="swiper-container">
@@ -126,7 +120,9 @@
     <span></span>
     <foreach name="courseList" item="for">
         <div class="contain">
-            <img src="{$qijia_url}{$for['image']}" alt="" class="col-lg-7 jiaxiao-img">
+            <div class="col-lg-7">
+                <img src="{$qijia_url}{$for['image']}" alt="" style="width:90%">
+            </div>
             <div class="col-lg-5">
                 <h3>{$for['title']}</h3>
                 <h4>驾照名称：{$for['cat_name']}</h4>
@@ -140,34 +136,15 @@
     <h2>驾考环境</h2>
     <span></span>
     <ul class="huanjing clearfix">
-        <li>
-            <img src="__PUBLIC__/src/image/jiakaohuanjing.jpg" alt="">
-            <div>
-                <h3>专业的教练</h3>
-                <span>全程专业教练陪护、指导您学习驾驶车辆</span>
-            </div>
-        </li>
-        <li>
-            <img src="__PUBLIC__/src/image/jiakaohuanjing.jpg" alt="">
-            <div>
-                <h3>专业的教练</h3>
-                <span>全程专业教练陪护、指导您学习驾驶车辆</span>
-            </div>
-        </li>
-        <li>
-            <img src="__PUBLIC__/src/image/jiakaohuanjing.jpg" alt="">
-            <div>
-                <h3>专业的教练</h3>
-                <span>全程专业教练陪护、指导您学习驾驶车辆</span>
-            </div>
-        </li>
-        <li>
-            <img src="__PUBLIC__/src/image/jiakaohuanjing.jpg" alt="">
-            <div>
-                <h3>专业的教练</h3>
-                <span>全程专业教练陪护、指导您学习驾驶车辆</span>
-            </div>
-        </li>
+        <foreach name="env" item="for">
+            <li>
+                <img src="__ROOT__/{$for.img}" alt="">
+                <div>
+                    <h3>{$for.title}</h3>
+                    <span>{$for.desc}</span>
+                </div>
+            </li>
+        </foreach>
     </ul>
 </div>
 <include file="Public:bottom-aside"/>

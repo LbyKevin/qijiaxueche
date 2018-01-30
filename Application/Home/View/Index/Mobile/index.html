@@ -1,0 +1,250 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=0.5">
+    <title>首页12发的个分类3</title>
+    <include file="Public:wx_top"/>
+    <style>
+        .swiper-slide{
+            height: auto;
+        }
+        .swiper-slide img{
+            width: 100%;
+            height: 100%;
+        }
+        .swiper-pagination-bullet-active{
+            background: #DABC88;
+        }
+        .tap{
+            height: 11vh;
+            /*width: 100%;*/
+            background-color: #0C275B;
+        }
+        .tap ul{
+            display: -webkit-flex;
+            display: flex;
+            -webkit-justify-content: center;
+            justify-content: center;
+            height: 100%;
+            align-items: center;
+        }
+        .tap ul li{
+            width: 25%;
+            text-align: center;
+        }
+        .tap ul li i,.tap ul li span{
+            width: 100%;
+            display: block;
+        }
+        .kecheng-list li{
+            width: 100%;
+            margin-bottom: 40px;
+            background-color: white;
+            box-shadow: 1px 1px 30px #eee;
+        }
+        .kecheng-list li:last-child{
+            margin-bottom: 0;
+        }
+        .kecheng-list li img{
+            padding-left: 0;
+            height:13.5vh;
+        }
+        .kecheng-list li div h3{
+            font-size: 3.74vw;
+            margin-top: 2vh;
+            margin-bottom:1.4vh;
+            color: black;
+        }
+        .kecheng-list li div>span{
+            color: #666;
+            font-size: 3.2vw;
+            height: 5.24vh;
+            display: block;
+        }
+        .kecheng-list li div>p{
+            position: relative;
+        }
+        .kecheng-list li div>p span{
+            color: #999;
+            font-size: 2.94vw;
+            margin-right: 3vw;
+
+        }
+        .kecheng-list li div>p span:last-child{
+            color: #DABC88;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+        .zhutuike{
+            padding-top: 0.1vh;
+            background-color: rgb(251,251,251);
+        }
+        .zhutuike>img{
+            width: 100%;
+            height: auto;
+        }
+        .contact-us{
+            background-color: #0C275B;
+            width: 100%;
+            padding: 0 2.7%;
+            color: #DFBF8A;
+            font-size: 3.74vw;
+            padding-top: 3vh;
+            padding-bottom: 2.25vh;
+        }
+        .contact-us>ul{
+            width: 83%;
+            float: left;
+        }
+        .contact-us>ul li{
+            margin-bottom: 1.5vh;
+        }
+        .contact-us>div{
+            width: 17%;
+            float: right;
+            text-align: center;
+        }
+        .contact-us>div span{
+            display: block;
+            margin-top: 1.4vh;
+        }
+        .taps{
+            height: 30%;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+            background-color: rgba(12, 39, 91, 0.8);
+            color: #DFBF8A;
+            padding: 0 3%;
+        }
+        .taps h3{
+            margin: 0;
+            font-size: 3.74vw;
+            line-height: 1.5;
+        }
+        .taps p{
+            font-size: 2.94vw;
+            line-height: 1.5;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <i class="iconfont back">&#xe79e;</i>
+    启驾学车
+</header>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <foreach name="slide" item="for">
+            <div class="swiper-slide"><img src="__ROOT__/{$for.pic}" alt=""></div>
+        </foreach>
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+<div class="box-container tap">
+    <ul>
+        <li>
+            <a href="{$qijia_href}app/index.php?i=9&c=entry&do=entry&m=kt_eastpost">
+                <i class="iconfont tapIcon">&#xe7a9;</i>
+                <span class="tapText">驾校课程</span>
+            </a>
+        </li>
+        <li>
+            <a href="{:U('Index/enterprise_experience')}">
+                <i class="iconfont tapIcon">&#xe7ac;</i>
+                <span class="tapText">企业历程</span>
+            </a>
+        </li>
+        <li>
+            <a href="{:U('Index/Industry_dynamics')}">
+                <i class="iconfont tapIcon">&#xe7a4;</i>
+                <span class="tapText">行业动态</span>
+            </a>
+        </li>
+        <li>
+            <a href="{:U('Index/traffic_regulations')}">
+                <i class="iconfont tapIcon">&#xe7a6;</i>
+                <span class="tapText">交通法规</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="zhutuike contain">
+    <h2 class="title">
+        <span>主推课程</span>
+        <div class="more"><a href="{:U('Index/index',array('act'=>'more'))}">查看更多 <i class="iconfont">&#xe7a7;</i></a></div>
+    </h2>
+    <ul class="kecheng-list">
+        <foreach name="courseList" item="for">
+            <li class="clearfix">
+                <a href="{:U('Index/index')}">
+                <img src="{$qijia_url}{$for.image}" alt="" class="col-xs-4">
+                <div class="col-xs-8">
+                    <h3>{$for.title}</h3>
+                    <span>{$for['place']}</span>
+                    <p><span>{$for['date']|date="Y-m-d",###} 到 {$for['date']|date="Y-m-d",###}</span><span>￥{$for.fee}元</span></p>
+                </div>
+                </a>
+            </li>
+        </foreach>
+    </ul>
+    <h2 class="title">
+        <span>驾考环境</span>
+        <!--<div class="more">查看更多 <i class="iconfont">&#xe7a7;</i></div>-->
+    </h2>
+    <div class="swiper-container" id="swiper2">
+        <div class="swiper-wrapper">
+            <foreach name="env" item="for">
+                <div class="swiper-slide">
+                    <img src="__ROOT__/{$for.img}" alt="">
+                    <div class="taps">
+                        <h3>{$for.title}</h3>
+                        <p>{$for.desc}</p>
+                    </div>
+                </div>
+            </foreach>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+
+</div>
+<div class="contact-us clearfix">
+    <ul>
+        <li>联系人：<span>{$contact_info.linkman}</span></li>
+        <li>联系电话：<span>{$contact_info.tel}</span></li>
+        <li>公司地址：<span>{$contact_info.address}</span></li>
+    </ul>
+    <div>
+        <img src="__ROOT__/{$contact_info.qrcode}" alt=""  style="width:100px;height: 100px;">
+        <span>关注我们</span>
+    </div>
+</div>
+</body>
+<script>
+  var mySwiper = new Swiper('.swiper-container', {
+    autoplay: 5000,//可选选项，自动滑动
+    pagination : '.swiper-pagination',
+    paginationClickable :true,
+    loop : true,
+  })
+
+  var mySwiper = new Swiper('#swiper2', {
+      autoplay: 5000,//可选选项，自动滑动
+      pagination : '.swiper-pagination',
+      paginationClickable :true,
+      loop : true,
+  })
+
+  $('.back').click(function () {
+      window.location.go(-1)
+  })
+</script>
+</html>

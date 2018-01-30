@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=0.5">
+    <title>企业历程</title>
+    <include file="Public:wx_top"/>
+    <style>
+        body>img{
+            width: 100%;
+            height: auto;
+        }
+        div{
+            width: 100%;
+            padding: 0 2.7%;
+            background-color: white;
+        }
+        h3{
+            margin: 0;
+            font-size: 4.26vw;
+            line-height: 3;
+            color: black;
+        }
+        p{
+            font-size:3.74vw;
+            color: #666;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="../index.html">
+    <i class="iconfont back">&#xe79e;</i>
+    </a>
+    企业历程
+</header>
+<foreach name="list" item="for">
+    <img src="__ROOT__/{$for.img}" alt="">
+    <div>
+        <h3>{$for.title}</h3>
+        {$for.content|htmlspecialchars_decode}
+    </div>
+</foreach>
+</body>
+</html>

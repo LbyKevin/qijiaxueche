@@ -39,7 +39,7 @@
         }
         .content ul li div h2{
             color:#DABC88;
-            font-size: 1.4vw;
+            font-size: 1.15vw;
             line-height:2;
         }
         .content ul li div p{
@@ -62,9 +62,6 @@
 </head>
 <body>
 <header>
-    <div class="col-lg-3" style="margin-top: 10px">
-        <img src=".__PUBLIC__/src/image/LOGO.png" alt="" >
-    </div>
     <include file="Public/aside"/>
 </header>
 <div class="content clearfix">
@@ -75,90 +72,20 @@
         </a>
     </h2>
     <ul class="clearfix">
+        <foreach name="list" item="for">
         <li class="col-lg-6">
-            <a href="./dynamic_details.html">
-                <div  class="col-lg-4">
-                    <img src=".__PUBLIC__/src/image/qiyejinglitu.jpg" alt="">
+            <a href="{:U('Index/dynamic_details',array('id'=>$for['id']))}">
+                <div  class="col-lg-5">
+                    <img src="__ROOT__/{$for.img}" alt="">
                 </div>
-                <div class="col-lg-8" style="">
-                    <h2>驾校提醒：2018年驾考新规定，科目二最新考试要求！</h2>
-                    <p>科目二是驾照测验中的一大难点，想要顺遂经由过程科二测验，考生必需要懂得其测验规矩，知彼知己，能力战无不胜</p>
-                    <span>2018-01-15</span><span>19:28</span>
+                <div class="col-lg-7" style="">
+                    <h2>{$for.title}</h2>
+                    <p>{$for.desc}</p>
+                    <span>{$for.ctime}</span>
                 </div>
             </a>
         </li>
-        <li class="col-lg-6">
-            <a href="./dynamic_details.html">
-                <div  class="col-lg-4">
-                    <img src=".__PUBLIC__/src/image/qiyejinglitu.jpg" alt="">
-                </div>
-                <div class="col-lg-8" style="">
-                    <h2>驾校提醒：2018年驾考新规定，科目二最新考试要求！</h2>
-                    <p>科目二是驾照测验中的一大难点，想要顺遂经由过程科二测验，考生必需要懂得其测验规矩，知彼知己，能力战无不胜</p>
-                    <span>2018-01-15</span><span>19:28</span>
-                </div>
-            </a>
-        </li>
-        <li class="col-lg-6">
-            <a href="./dynamic_details.html">
-                <div  class="col-lg-4">
-                    <img src=".__PUBLIC__/src/image/qiyejinglitu.jpg" alt="">
-                </div>
-                <div class="col-lg-8" style="">
-                    <h2>驾校提醒：2018年驾考新规定，科目二最新考试要求！</h2>
-                    <p>科目二是驾照测验中的一大难点，想要顺遂经由过程科二测验，考生必需要懂得其测验规矩，知彼知己，能力战无不胜</p>
-                    <span>2018-01-15</span><span>19:28</span>
-                </div>
-            </a>
-        </li>
-        <li class="col-lg-6">
-            <a href="./dynamic_details.html">
-                <div  class="col-lg-4">
-                    <img src=".__PUBLIC__/src/image/qiyejinglitu.jpg" alt="">
-                </div>
-                <div class="col-lg-8" style="">
-                    <h2>驾校提醒：2018年驾考新规定，科目二最新考试要求！</h2>
-                    <p>科目二是驾照测验中的一大难点，想要顺遂经由过程科二测验，考生必需要懂得其测验规矩，知彼知己，能力战无不胜</p>
-                    <span>2018-01-15</span><span>19:28</span>
-                </div>
-            </a>
-        </li>
-        <li class="col-lg-6">
-            <a href="./dynamic_details.html">
-                <div  class="col-lg-4">
-                    <img src=".__PUBLIC__/src/image/qiyejinglitu.jpg" alt="">
-                </div>
-                <div class="col-lg-8" style="">
-                    <h2>驾校提醒：2018年驾考新规定，科目二最新考试要求！</h2>
-                    <p>科目二是驾照测验中的一大难点，想要顺遂经由过程科二测验，考生必需要懂得其测验规矩，知彼知己，能力战无不胜</p>
-                    <span>2018-01-15</span><span>19:28</span>
-                </div>
-            </a>
-        </li>
-        <li class="col-lg-6">
-            <a href="./dynamic_details.html">
-                <div  class="col-lg-4">
-                    <img src=".__PUBLIC__/src/image/qiyejinglitu.jpg" alt="">
-                </div>
-                <div class="col-lg-8" style="">
-                    <h2>驾校提醒：2018年驾考新规定，科目二最新考试要求！</h2>
-                    <p>科目二是驾照测验中的一大难点，想要顺遂经由过程科二测验，考生必需要懂得其测验规矩，知彼知己，能力战无不胜</p>
-                    <span>2018-01-15</span><span>19:28</span>
-                </div>
-            </a>
-        </li>
-        <li class="col-lg-6">
-            <a href="./dynamic_details.html">
-                <div  class="col-lg-4">
-                    <img src=".__PUBLIC__/src/image/qiyejinglitu.jpg" alt="">
-                </div>
-                <div class="col-lg-8" style="">
-                    <h2>驾校提醒：2018年驾考新规定，科目二最新考试要求！</h2>
-                    <p>科目二是驾照测验中的一大难点，想要顺遂经由过程科二测验，考生必需要懂得其测验规矩，知彼知己，能力战无不胜</p>
-                    <span>2018-01-15</span><span>19:28</span>
-                </div>
-            </a>
-        </li>
+        </foreach>
     </ul>
 </div>
 <include file="Public:bottom-aside"/>

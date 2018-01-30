@@ -1,0 +1,68 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=0.5">
+    <title>行业动态—详情</title>
+    <include file="Public:wx_top"/>
+    <style>
+        .contain h1{
+            width: 100%;
+            font-size:4vw;
+            margin: 0;
+            text-align: left;
+            line-height: 2;
+            padding-top:1vh;
+            color: black;
+        }
+        .contain h4{
+            margin: 0;
+            margin-top: 1.4vh;
+        }
+        .contain h4 span{
+            margin-right: 4vw;
+            color: #666;
+            font-size: 3.2vw;
+        }
+        body>img{
+            width: 100%;
+            margin-top: 2.25vh;
+        }
+        ul.contain{
+            padding-top: 2.25vh;
+            padding-bottom:1.275vh;
+        }
+        ul.contain li{
+            font-size: 3.74vw;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 5.2474vh;
+        }
+        ul.contain li:last-child{
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="{:U('Index/industry_dynamics')}">
+    <i class="iconfont back">&#xe79e;</i>
+    </a>
+    行业动态
+</header>
+<div class="contain">
+    <h1>
+        {$info.title}
+    </h1>
+    <h4><span>{$info.nickname}</span><span>{$info.ctime}</span></h4>
+</div>
+<img src="__ROOT__/{$info.img}" alt="">
+<ul class="contain">
+   <li>
+       {$info.content|htmlspecialchars_decode}
+   </li>
+</ul>
+</body>
+</html>
