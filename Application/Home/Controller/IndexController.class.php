@@ -5,22 +5,31 @@ class IndexController extends CommonController {
 //首页
     public function index(){
         $this->pvuvStatistics();
-        $limit = '0,2';
-        if(I('get.act') == 'more') {
-            $limit = '0,100';
-        }
-        $this->courseList = M('Join')->alias('j')
-            ->join("LEFT JOIN ims_acti2_cat c ON j.pid=c.id")
-            ->field('j.*,c.cat_name')
-            ->limit($limit)
-            ->select();
+
         $this->slide = M('QijiaSlideshow')
             ->where(array('is_recommend'=>1))
             ->order(array('ctime'=>'ASC'))->select();
         $this->env = M('QijiaNews')->where(array('type'=>4))->select();
         if($this->isMobile()) {
+            $limit = '0,2';
+            if(I('get.act') == 'more') {
+                $limit = '0,100';
+            }
+            $this->courseList = M('Join')->alias('j')
+                ->join("LEFT JOIN ims_acti2_cat c ON j.pid=c.id")
+                ->field('j.*,c.cat_name')
+                ->order(array('id'=>'DESC'))
+                ->limit($limit)
+                ->select();
             $this->display('Index/Mobile/index');
         }else {
+            $limit = '0,6';
+            $this->courseList = M('Join')->alias('j')
+                ->join("LEFT JOIN ims_acti2_cat c ON j.pid=c.id")
+                ->field('j.*,c.cat_name')
+                ->order(array('id'=>'DESC'))
+                ->limit($limit)
+                ->select();
             $this->display();
         }
     }
@@ -63,9 +72,16 @@ class IndexController extends CommonController {
     }
 //行业动态
     public function Industry_dynamics() {
-        $this->list = M('QijiaNews')->where(array('type'=>2,'is_recommend'=>1))->select();
+        $limit = '0,4';
+        if(I('get.act') == 'history') {
+            $limit = '0,100';
+        }
+        $this->list = M('QijiaNews')
+            ->order(array('id'=>'DESC'))
+            ->limit($limit)
+            ->where(array('type'=>2,'is_recommend'=>1))->select();
         if($this->isMobile()) {
-            $this->display('Index/Mobile/Industry_dynamics');
+            $this->display('Index/Mobile/industry_dynamics');
         }else {
             $this->display();
         }
@@ -106,7 +122,7 @@ class IndexController extends CommonController {
 //联系我们
     public function contact_us() {
         if($this->isMobile()) {
-            $this->display('Index/Mobile/index');
+            $this->display('Index/Mobile/contact_us');
         }else {
             $this->display();
         }

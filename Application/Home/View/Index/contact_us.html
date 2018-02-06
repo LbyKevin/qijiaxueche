@@ -1,8 +1,5 @@
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=MEnmYZ8ZGrPBk74u2iEy6v4pXh2vvFCj"></script>
     <style>
-        .content{
-            padding-top: 56px;
-        }
         .content>h2 {
             width: 100%;
             text-align: center;
@@ -51,6 +48,11 @@
             font-size: 1.5vw;
             color: #666;
         }
+        .content{
+            min-width: 1200px;
+            padding: 0 8%;
+            padding-top: 56px;
+        }
     </style>
 </head>
 <body>
@@ -72,7 +74,7 @@
                 <li>公司地址：{$contact_info.address}</li>
             </ul>
         </div>
-            <div style="width:50%;border:#ccc solid 1px;font-size:12px" id="map"></div>
+            <div style="width:40%;border:#ccc solid 1px;font-size:12px" id="map"></div>
     </div>
 </div>
 

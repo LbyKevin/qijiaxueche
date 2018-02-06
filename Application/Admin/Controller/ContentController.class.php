@@ -31,33 +31,42 @@ class ContentController extends CommonController
     }
 
     public function newsList() {
+        $search = I('get.search');
+        $where['n.type'] = array('EQ',2);
+        if($search) { $where['n.title'] = array('LIKE',"%" . $search . "%");}
         $this->list = M('QijiaNews')->alias('n')
             ->join("LEFT JOIN ims_acti2_qijia_admin a ON n.admin_id=a.id")
             ->field('n.*,a.nickname')
             ->order(array('n.sort'=>'ASC'))
-            ->where(array('type'=>2))->select();
+            ->where($where)->select();
         $this->type = 2;
         $this->title = '行业动态';
         $this->display('courseList');
     }
 
     public function lawsList() {
+        $search = I('get.search');
+        $where['n.type'] = array('EQ',3);
+        if($search) { $where['n.title'] = array('LIKE',"%" . $search . "%");}
         $this->list = M('QijiaNews')->alias('n')
             ->join("LEFT JOIN ims_acti2_qijia_admin a ON n.admin_id=a.id")
             ->field('n.*,a.nickname')
             ->order(array('n.sort'=>'ASC'))
-            ->where(array('type'=>3))->select();
+            ->where($where)->select();
         $this->type = 3;
         $this->title = '交通法规';
         $this->display('courseList');
     }
 
     public function environment() {
+        $search = I('get.search');
+        $where['n.type'] = array('EQ',4);
+        if($search) { $where['n.title'] = array('LIKE',"%" . $search . "%");}
         $this->list = M('QijiaNews')->alias('n')
             ->join("LEFT JOIN ims_acti2_qijia_admin a ON n.admin_id=a.id")
             ->field('n.*,a.nickname')
             ->order(array('n.sort'=>'ASC'))
-            ->where(array('type'=>4))->select();
+            ->where($where)->select();
         $this->type = 4;
         $this->title = '驾校环境';
         $this->display('courseList');
@@ -209,6 +218,31 @@ class ContentController extends CommonController
         $this->display();
     }
 
+    public function delSlide() {
+
+    }
+
+    public function isrecommend() {
+        $Slide = M('QijiaSlideshow');
+        $id = I('post.id');
+        $info = $Slide->where(array('id'=>$id))->find();
+        if($info['is_recommend'] == 1) {
+            $res = $Slide->where(array('id'=>$id))->setField('is_recommend',-1);
+            if($res !== false) {
+                json(1);
+            }else {
+                json('系统错误');
+            }
+        }else {
+            $res = $Slide->where(array('id'=>$id))->setField('is_recommend',1);
+            if($res !== false) {
+                json(2);
+            }else {
+                json('系统错误');
+            }
+        }
+    }
+
     public function newSort() {
         $wraper = M('QijiaSlideshow');
         $order = $wraper->order(array('ctime' => 'ASC'))->getField('ctime', true);
@@ -235,6 +269,10 @@ class ContentController extends CommonController
         if($_FILES['file']['name'] != '') {
             $info = $this->OneUpload('file');
             $_POST['qrcode'] = $info['savepath'].$info['savename'];
+        }
+        if($_FILES['file2']['name'] != '') {
+            $info = $this->OneUpload('file2');
+            $_POST['course_qrcode'] = $info['savepath'].$info['savename'];
         }
         if(IS_AJAX) {
             if($Contact->create()) {

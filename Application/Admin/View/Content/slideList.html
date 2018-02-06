@@ -25,6 +25,11 @@
                         </p>
                     </div>
                     <div style="display: inline-block;text-align: right;">
+                        <if condition="$for['is_recommend'] eq 1">
+                            <a href="javascript:avoid(0);" class="btn btn-success isrecommend" title="{$for.id}">已启用</a>
+                            <else/>
+                            <a href="javascript:avoid(0);" class="btn btn-danger isrecommend" title="{$for.id}">已禁用</a>
+                        </if>
                         <a href="{:U('Content/modSlide',array('id'=>$for['id']))}" class="btn btn-info">编辑</a>
                         <a href="{:U('Content/delSlide',array('id'=>$for['id']))}" class="btn btn-danger">删除</a>
                     </div>
@@ -105,4 +110,35 @@
             }
         })
     }
+
+    $('.isrecommend').click(function () {
+        var self = $(this)
+        var id = self.attr('title')
+        self.attr('disabled',true)
+        $.ajax({
+            url:"{:U('Content/isrecommend')}",
+            dataType:"json",
+            type:"post",
+            data:{id:id},
+            success:function (data) {
+                console.log(data)
+                if(data == 1) {
+                    self.text('已禁用')
+                    self.removeClass('btn-success')
+                    self.addClass('btn-danger')
+                }else if(data == 2) {
+                    self.text('已启用')
+                    self.removeClass('btn-danger')
+                    self.addClass('btn-success')
+                }else {
+                    alert(data)
+                }
+                self.attr('disabled',false)
+            },
+            error:function (data) {
+                alert('请求接口失败')
+                self.attr('disabled',false)
+            }
+        })
+    })
 </script>

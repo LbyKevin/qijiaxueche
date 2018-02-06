@@ -30,6 +30,14 @@ class QijiaContactModel extends Model
                 }
             }
         }
+        if($data['course_qrcode']!='') {
+            $oldPath = $this->where($options['where'])->getField('qrcode');
+            if($oldPath){
+                if(file_exists($oldPath)){
+                    @unlink($oldPath);
+                }
+            }
+        }
     }
 
     protected function _before_delete($options) {

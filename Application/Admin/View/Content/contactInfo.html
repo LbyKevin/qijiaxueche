@@ -47,15 +47,27 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label">官网二维码</label>
+                    <label class="col-sm-3 control-label">公众号二维码</label>
                     <div class="col-sm-9">
-                        <label for="file" class="btn btn-facebook">选择图片</label>
+                        <label for="file1" class="btn btn-facebook">选择图片</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label"></label>
                     <div class="col-sm-9">
-                        <img class="image" src="__ROOT__/{$info['qrcode']}" style="width:300px;">
+                        <img class="image1" src="__ROOT__/{$info['qrcode']}" style="width:300px;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">报名二维码</label>
+                    <div class="col-sm-9">
+                        <label for="file2" class="btn btn-facebook">选择图片</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+                        <img class="image2" src="__ROOT__/{$info['course_qrcode']}" style="width:300px;">
                     </div>
                 </div>
                 <div class="form-group" style="padding:20px 15px">
@@ -64,7 +76,8 @@
                         <textarea id="editor" name="content" type="text/plain" style="width:1024px;height:500px;">{$info.content}</textarea>
                     </div>
                 </div>
-                <input id="file" class="upload" name="file" type="file" style="display: none">
+                <input id="file1" class="upload" name="file" type="file" style="display: none">
+                <input id="file2" class="upload2" name="file2" type="file" style="display: none">
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-10">
                         <button id="setting-btn" type="button" class="btn btn-default">保存</button>
@@ -79,10 +92,16 @@
 <script>
     var ue = UE.getEditor('editor')
 
-    $('.upload').change(function(e){
+    $('#file1').change(function(e){
         var img = e.target.files[0];
         var src = window.URL.createObjectURL(img);
-        $('.image').attr('src',src);
+        $('.image1').attr('src',src);
+    })
+
+    $('#file2').change(function(e){
+        var img = e.target.files[0];
+        var src = window.URL.createObjectURL(img);
+        $('.image2').attr('src',src);
     })
 
     $("#setting-btn").click(function() {

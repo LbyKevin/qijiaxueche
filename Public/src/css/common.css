@@ -48,9 +48,9 @@ header ul li{
     top: 114px;
 }
 footer{
-    padding-top: 40px;
-    background-color:#183161;
-    padding-bottom: 65px;
+    padding-top: 2vh;
+    background-color: #183161;
+    padding-bottom: 3vh;
 }
 
 footer>div:first-child>h2,footer>div:first-child>h3{
@@ -62,63 +62,66 @@ footer>div:first-child>h2,footer>div:first-child>h3{
 footer>div:first-child>input{
     display: block;
     margin: 0 auto;
-    margin-bottom: 40px;
-    height: 76px;
+    margin-bottom: 2vh;
+    height: 5vh;
     line-height: 76px;
-    font-size: 27px;
-    padding-left: 7px;
+    font-size: 1vw;
+    padding-left: 1%;
     border-radius: 10px;
-    width: 554px;
+    width: 21vw;
 }
 footer>div:first-child>h2{
-    font-size: 47px;
+    font-size: 2vw;
 }
 footer>div:first-child>h3{
-    font-size: 33px;
-    margin-bottom: 30px;
+    font-size: 1.5vw;
+    margin-bottom: 1vh;
 }
 footer>div:first-child button{
-    width:208px;
-    height:68px;
-    background:rgba(218,188,136,1);
+    width: 8vw;
+    height: 5.5vh;
+    background: rgba(218,188,136,1);
     border-radius: 10px;
     margin: 0 auto;
     display: block;
-    color:rgba(255,255,255,1);
-    font-size:33px;
+    color: rgba(255,255,255,1);
+    font-size: 1.4vw;
 }
 footer>div:last-child{
     width: 100%;
-    padding:0 7.8%;
-    padding-top: 70px;
+    padding: 0 7.8%;
+    padding-top: 2vh;
     color: #DABC88;
 }
 footer>div:last-child h4{
     width: 70%;
-    padding-bottom: 20px;
+    padding-bottom: 1vh;
     border-bottom: 2px solid #DABC88;
-    font-size:33px;
+    font-size: 1.5vw;
 }
 footer>div:last-child ul{
-    margin-top: 30px;
+    margin-top: 2vh;
 
 }
 footer>div:last-child ul li{
-    margin-bottom: 28px;
+    margin-bottom: 1.4vh;
     line-height: 1;
-    font-size: 1.31vw;
+    font-size: 1.1vw;
 }
 footer>div:last-child img{
-    width: 80%;
+    width: 66%;
     height: auto;
     margin: 0 auto;
     margin-bottom: 25px;
 }
 footer>div:last-child span{
     display: block;
-    font-size:33px;
+    font-size: 1.5vw;
 }
 .swiper-slide img{
     width: 100%;
+}
+p img{
+    max-width: 100%;
 }
 

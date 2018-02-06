@@ -11,6 +11,8 @@ namespace Admin\Controller;
 use Think\Controller;
 class LoginController extends Controller {
     public function index() {
+//        $list = M('QijiaAdmin')->select();
+//        dump($list);die;
         if(session('qijiaxueche_username')) {
             $this->redirect('Index/index');
             return;

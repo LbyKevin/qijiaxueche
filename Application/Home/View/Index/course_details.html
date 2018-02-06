@@ -1,25 +1,25 @@
  <style>
         .bigpic{
-            width: 100%;
-            min-width: 1200px;
-            height: auto;
+            width: 49vw;
+            height: 50vh;
         }
         .details{
             margin-top: 85px;
         }
         .details h2{
-            font-size: 2.8vw;
+            font-size: 2vw;
             color: #222222;
-            margin-bottom: 48px;
+            margin-top: 30px;
+            margin-bottom: 30px;
 
         }
         .details h3{
-            font-size: 2.1vw;
+            font-size: 1.4vw;
             color: #666;
-            margin-bottom: 48px;
+            margin-bottom: 2vh;
         }
         .details div{
-            font-size: 2.1vw;
+            font-size: 1.4vw;
             color: #666;
             margin-bottom: 48px;
         }
@@ -36,20 +36,23 @@
 <header>
     <include file="Public/aside"/>
 </header>
-<img src=".__PUBLIC__/src/image/bannner.jpg" alt="" class="bigpic">
-<div class="col-lg-offset-3 details">
-    <h2>{$info['title']}</h2>
-    <h3>驾照名称：{$info['cat_name']}</h3>
-    <h3>报名时间：{$info['date']|date="Y-m-d",###} 到 {$info['date']|date="Y-m-d",###}</h3>
-    <h3>驾校地点：{$info['place']}</h3>
-    <h3>课程收费：￥{$info['fee']}元</h3>
-    <div>
-        <span>课程收费:&nbsp;&nbsp;</span>
-        <ul>
-            <li>{$info['acti_desc']|htmlspecialchars_decode}</li>
-        </ul>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3 details">
+        <img src="{$qijia_url}{$info.image}" alt="" class="bigpic">
+        <h2>{$info['title']}</h2>
+        <h3>驾校名称：{$info['cat_name']}</h3>
+        <h3>报名时间：{$info['date']|date="Y-m-d",###} 到 {$info['date']|date="Y-m-d",###}</h3>
+        <h3>驾校地点：{$info['place']}</h3>
+        <h3>课程收费：￥{$info['fee']}元</h3>
+        <div style="overflow: hidden;">
+            <span style="float: left;">课程介绍:&nbsp;&nbsp;</span>
+            <ul style="float: left;width: 85%;">
+                <li>{$info['acti_desc']|htmlspecialchars_decode}</li>
+            </ul>
+        </div>
     </div>
 </div>
+
 <include file="Public:bottom-aside"/>
 <script>
   $('header ul').moveline({color:'#DABC88',position:'inner',height: 4});

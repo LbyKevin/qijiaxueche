@@ -67,8 +67,8 @@
 <div class="content clearfix">
     <h2>
         行业动态
-        <a href="">
-            <span>历史动态 <img src=".__PUBLIC__/src/image/lishidongtai.png" alt=""></span>
+        <a href="{:U('Index/Industry_dynamics',array('act'=>'history'))}">
+            <span>历史动态 <img src="__PUBLIC__/src/image/lishidongtai.png" alt=""></span>
         </a>
     </h2>
     <ul class="clearfix">
@@ -76,7 +76,7 @@
         <li class="col-lg-6">
             <a href="{:U('Index/dynamic_details',array('id'=>$for['id']))}">
                 <div  class="col-lg-5">
-                    <img src="__ROOT__/{$for.img}" alt="">
+                    <img src="__ROOT__/{$for.img}" alt="" class="hvr-glow">
                 </div>
                 <div class="col-lg-7" style="">
                     <h2>{$for.title}</h2>

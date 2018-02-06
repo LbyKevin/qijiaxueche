@@ -17,16 +17,18 @@
             </div>
             <div class="col-sm-5"></div>
         </div>
+        <if condition="$info['type'] NEQ 1">
         <div class="form-group">
             <label class="col-sm-2 control-label" style="color:#fff">
                 <label for="file" class="btn btn-primary"><span>上传图片</span></label>
             </label>
             <div class="col-sm-5">
                 <input id="file" type="file" name="file" class="upload" style="display:none">
-                <img class="image" style="width:100%;" src="/qijiaxueche/{$info['img']}">
+                <img class="image" style="width:100%;" src="__ROOT__/{$info['img']}">
             </div>
             <div class="col-sm-5"></div>
         </div>
+        </if>
         <if condition="$info['type'] NEQ 4">
             <div class="form-group" style="padding:20px 15px">
                 <label class="col-sm-2 control-label">{$typename}内容:</label>

@@ -1,18 +1,20 @@
  <style>
         .content{
             width: 100%;
-            padding-bottom: 105px;
+            padding-bottom: 4vh;
         }
         .content li{
             padding: 0 7.5%;
-            margin-top: 6VH;
-            padding-bottom: 6VH;
+            padding-bottom: 0px;
+            margin-top: 3VH;
+            padding-bottom: 3VH;
             border-bottom: 2px solid #DABC88;
         }
         @media (min-width: 1200px){
             .content>li>img{
                 float: left;
                 width: 38%;
+                height: 27vh;
             }
             .content>li div{
                 float: right;
@@ -32,8 +34,9 @@
             margin-bottom: 20px;
             display: -webkit-box;
             -webkit-box-orient: vertical;
-            -webkit-line-clamp: 4;
+            -webkit-line-clamp: 5;
             overflow: hidden;
+            height: 9.5vw;
         }
         .content li div button{
             background-color:#0C275B ;
@@ -57,13 +60,13 @@
 <ul class="content">
     <foreach name="list" item="for">
         <li class="clearfix" style="width:70%;margin-left: 15%">
-            <img src="__ROOT__/{$for.img}" alt="" class="">
+            <img src="__ROOT__/{$for.img}" alt="" class="hvr-push">
             <div class="">
                 <h2>{$for.title}</h2>
                 <p>{$for.desc}</p>
-                <a href="{:U('Index/details_of_traffic_regulations',array('id'=>$for['id']))}"><button>了解更多 <img src="__PUBLIC__/src/image/arr.png" alt=""></button></a>
+                <a href="{:U('Index/details_of_traffic_regulations',array('id'=>$for['id']))}"><button class="hvr-wobble-horizontal">了解更多 <img src="__PUBLIC__/src/image/arr.png" alt=""></button></a>
             </div>
-        </li>+
+        </li>
     </foreach>
 
 </ul>
