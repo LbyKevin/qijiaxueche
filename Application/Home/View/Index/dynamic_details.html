@@ -1,23 +1,26 @@
  <style>
         .content{
-            padding-top: 80px;
-            width: 85%;
+            padding-top: 50px;
+            width: 1200px;
             margin: 0 auto;
             padding-bottom: 30px;
         }
         .content h1{
             color: #222;
-            font-size: 2.1vw;
-            margin-bottom: 35px;
+            font-size: 30px;
+            margin-bottom: 20px;
         }
         .content h5{
-            font-size: 1.4vw;
+            font-size: 16px;
             color: #666;
-            margin-bottom: 35px;
+            margin-bottom: 20px;
         }
         .content>img{
-            width: 100%;
-            box-shadow:0px 1px 70px -13px #0C275B;
+            width: 1000px;
+            height: 563;
+            display: block;
+            margin: 0 auto;
+            /*box-shadow:0px 1px 70px -13px #0C275B;*/
         }
         .content ul{
             margin-top: 50px;
@@ -30,7 +33,7 @@
         }
         .content p{
             color: #666;
-            font-size: 1.4vw;
+            font-size: 20px;
         }
     </style>
 </head>
@@ -39,11 +42,11 @@
     <include file="Public/aside"/>
 </header>
 <div class="content">
-    <h1 align="center" style="width:60%;margin-left: 20%">{$info['title']}</h1>
+    <h1 align="center" style="">{$info['title']}</h1>
     <h5 align="center">作者：<span>{$info.nickname}</span> &nbsp;时间：<span><i>{$info.ctime}</i></span></h5>
-    <img src="__ROOT__/{$info.img}" alt="" style="width:50%;margin-left: 25%">
+    <img src="__ROOT__/{$info.img}" alt="" style="">
 </div>
-<div style="width:50%;margin-left: 25%;font-size: 1.4vw">
+<div style="width:1200px;margin:0 auto;font-size: 20px">
     {$info.content|htmlspecialchars_decode}
 </div>
 <include file="Public:bottom-aside"/>

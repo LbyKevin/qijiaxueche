@@ -1,31 +1,31 @@
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=MEnmYZ8ZGrPBk74u2iEy6v4pXh2vvFCj"></script>
     <style>
         .content>h2 {
-            width: 100%;
+            width: 16vw;
+            margin: 0 auto;
             text-align: center;
             color: #DABC88;
-            padding-bottom: 45px;
-            border-bottom: 2px solid #DABC88;
-            font-size: 2.1vw;
-            margin-bottom: 39px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #DABC88;
+            font-size: 30px;
+            margin-bottom: 50px;
         }
         .content>img{
             width: 85%;
             margin: 0 auto;
             display: block;
-            box-shadow: 1px 1px 50px #ccc;
+            /*box-shadow: 1px 1px 50px #ccc;*/
         }
         .content p{
-            width: 85%;
             margin: 55px auto;
             text-align: left;
             color: #666;
-            font-size: 1.4vw;
+            font-size: 20px;
             line-height: 1.8;
             /*margin: 55px 0;*/
         }
         .contact{
-            width: 85%;
+            width: 100%;
             margin: 0 auto;
             display: -webkit-flex;
             display: flex;
@@ -33,6 +33,7 @@
             justify-content: space-between;
             -webkit-align-items: center;
             align-items: center;
+            margin-bottom: 20px;
         }
         .contact h4{
             font-size: 2.1vw;
@@ -45,13 +46,13 @@
         .contact ul li{
             margin-bottom: 28px;
             line-height: 1;
-            font-size: 1.5vw;
+            font-size: 20px;
             color: #666;
         }
         .content{
-            min-width: 1200px;
-            padding: 0 8%;
-            padding-top: 56px;
+            width: 1200px;
+            margin: 0 auto;
+            padding-top: 50px;
         }
     </style>
 </head>
@@ -66,7 +67,6 @@
     <h2>联系我们</h2>
     <div class="contact clearfix">
         <div class="">
-            <h4>联系我们</h4>
             <ul>
                 <li>联系人：{$contact_info.linkman}</li>
                 <li>联系电话：{$contact_info.tel}</li>

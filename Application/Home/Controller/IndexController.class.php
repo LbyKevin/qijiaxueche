@@ -5,7 +5,7 @@ class IndexController extends CommonController {
 //首页
     public function index(){
         $this->pvuvStatistics();
-
+        $where['j.uniacid'] = array('EQ',15);
         $this->slide = M('QijiaSlideshow')
             ->where(array('is_recommend'=>1))
             ->order(array('ctime'=>'ASC'))->select();
@@ -18,6 +18,7 @@ class IndexController extends CommonController {
             $this->courseList = M('Join')->alias('j')
                 ->join("LEFT JOIN ims_acti2_cat c ON j.pid=c.id")
                 ->field('j.*,c.cat_name')
+                ->where($where)
                 ->order(array('id'=>'DESC'))
                 ->limit($limit)
                 ->select();
@@ -26,6 +27,7 @@ class IndexController extends CommonController {
             $limit = '0,6';
             $this->courseList = M('Join')->alias('j')
                 ->join("LEFT JOIN ims_acti2_cat c ON j.pid=c.id")
+                ->where($where)
                 ->field('j.*,c.cat_name')
                 ->order(array('id'=>'DESC'))
                 ->limit($limit)

@@ -1,14 +1,15 @@
  <style>
         .content{
-            width: 100%;
+            width: 1200px;
+            margin: 0 auto;
             padding-bottom: 4vh;
         }
         .content li{
-            padding: 0 7.5%;
-            padding-bottom: 0px;
-            margin-top: 3VH;
-            padding-bottom: 3VH;
-            border-bottom: 2px solid #DABC88;
+            /*padding: 0 7.5%;*/
+            /*padding-bottom: 0px;*/
+            margin-top: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #DABC88;
         }
         @media (min-width: 1200px){
             .content>li>img{
@@ -23,33 +24,33 @@
         }
 
         .content li div h2{
-            font-size: 1.4vw;
+            font-size: 25px;
             color: #DABC88;
             line-height: 2;
         }
         .content li div p{
-            font-size: 1.25vw;
+            font-size: 20px;
             color: #666;
             line-height: 1.5;
             margin-bottom: 20px;
             display: -webkit-box;
             -webkit-box-orient: vertical;
-            -webkit-line-clamp: 5;
+            -webkit-line-clamp: 4;
             overflow: hidden;
-            height: 9.5vw;
+            height: 125px;
         }
         .content li div button{
             background-color:#0C275B ;
-            width:41%;
+            width:35%;
             height:50px;
             border-radius: 5px;
             color: #DABC88;
-            font-size: 1.4vw;
+            font-size: 22px;
 
         }
         .content li div button img{
-            vertical-align: initial;
-            width: 6%;
+            vertical-align: middle;
+            width: 11px;
         }
     </style>
 </head>
@@ -59,8 +60,10 @@
 </header>
 <ul class="content">
     <foreach name="list" item="for">
-        <li class="clearfix" style="width:70%;margin-left: 15%">
-            <img src="__ROOT__/{$for.img}" alt="" class="hvr-push">
+        <li class="clearfix" style="">
+            <!--<img src="__ROOT__/{$for.img}" alt="" class="hvr-push">-->
+            <div style='background-image: url("__ROOT__/{$for.img}");width: 38%;float: left;height:257px;background-size: cover;border-radius: 5px;background-position: center;' class="hvr-push" ></div>
+
             <div class="">
                 <h2>{$for.title}</h2>
                 <p>{$for.desc}</p>

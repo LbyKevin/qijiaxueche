@@ -101,3 +101,6 @@ header a{
 .more a,header a{
     color: #DABC88!important;
 }
+p img{
+    max-width: 100%;
+}

@@ -1,25 +1,29 @@
  <style>
         .bigpic{
-            width: 49vw;
-            height: 50vh;
+            width: 1000px;
+            height: 563px;
+            margin:0 auto;
+            display: block;
         }
         .details{
-            margin-top: 85px;
+            width: 1000px;
+            margin: 0 auto;
+            margin-top: 50px;
         }
         .details h2{
-            font-size: 2vw;
+            font-size: 25px;
             color: #222222;
-            margin-top: 30px;
-            margin-bottom: 30px;
+            margin-top: 50px;
+            margin-bottom: 20px;
 
         }
         .details h3{
-            font-size: 1.4vw;
+            font-size: 20px;
             color: #666;
             margin-bottom: 2vh;
         }
         .details div{
-            font-size: 1.4vw;
+            font-size: 20px;
             color: #666;
             margin-bottom: 48px;
         }
@@ -37,7 +41,7 @@
     <include file="Public/aside"/>
 </header>
 <div class="row">
-    <div class="col-sm-6 col-sm-offset-3 details">
+    <div class="details">
         <img src="{$qijia_url}{$info.image}" alt="" class="bigpic">
         <h2>{$info['title']}</h2>
         <h3>驾校名称：{$info['cat_name']}</h3>
